@@ -1,0 +1,6 @@
+pandas
+numpy
+xgboost
+sagemaker
+boto3
+jupyter
