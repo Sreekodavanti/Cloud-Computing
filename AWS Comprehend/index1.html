@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h1>Sentiment Analysis</h1>
+    <form id="sentimentForm">
+        <label for="textInput">Enter Text to Analyze:</label><br>
+        <textarea id="textInput" name="textInput" rows="4" cols="50"></textarea><br>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('sentimentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const text = document.getElementById('textInput').value;
+            analyzeSentiment(text);
+        });
+
+        function analyzeSentiment(text) {
+            fetch('/analyze_sentiment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayResults(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function displayResults(sentimentScores) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>Sentiment Analysis Results:</h2>
+                <p>Positive Score: ${sentimentScores.positive}</p>
+                <p>Negative Score: ${sentimentScores.negative}</p>
+                <p>Neutral Score: ${sentimentScores.neutral}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

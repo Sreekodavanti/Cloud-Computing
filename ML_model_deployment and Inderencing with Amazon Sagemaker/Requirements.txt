@@ -1,0 +1,5 @@
+pandas
+numpy
+xgboost
+sagemaker
+boto3
