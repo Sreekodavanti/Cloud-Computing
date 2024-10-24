@@ -1,6 +1,6 @@
 ## Overview
 
-This repository contains the implementation for my final exam assignment at AWS Academy, focused on using Amazon SageMaker for deploying machine learning models with Deployment Guardrails and Shadow Testing.
+This repository contains the implementation at AWS Academy, focused on using Amazon SageMaker for deploying machine learning models with Deployment Guardrails and Shadow Testing.
 
 ### Tasks Overview
 Deployment Guardrails:
